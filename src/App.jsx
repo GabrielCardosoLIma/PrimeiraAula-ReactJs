@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import './App.css';
-import Header from './Header';
+import Header from './componentes/Header/Header';
 
 function App() {
 
@@ -11,8 +12,17 @@ function App() {
     return a + b;
   }
 
+  const [contador, setContador]=useState(0);
+
+    // let contador = 0;
+  function handleButtonContar() {
+    // contador = contador + 1;
+    // contador++;
+    setContador(contador+1);
+  }
+
   return (
-    <>
+    <div className="App">
     <Header title="Meu primeiro componente React" />
     <Header title="Um componente com props" />
         <h2>
@@ -20,7 +30,9 @@ function App() {
           <div>Retorno da soma:{sum(5,6)}</div>
         </h2>
         <button onClick={handleButtonClick}>Click Me!</button>
-    </>
+        <Header title={contador} />
+        <button onClick={handleButtonContar}>Contar</button>
+    </div>
   );
 }
 
